@@ -3,10 +3,10 @@
 using namespace std;
 
 class cat
-{
-private:
-    /* data */
-public:
+{                //encapsular es protejer los datos de una clase 
+private:         //polimorfirmos usar el mismo aelerar pero con otoro mesaje 
+    /* data */    // abtraccion el usuario no ve lo q es la ecuacion 
+public:           //herencia : de la clase madre se puede envisr datos a una clase
   //atributos 
   int año;
   char pelaje[16];
