@@ -21,12 +21,17 @@ int main() {
     cout<< "5: salir "<<endl;
     cin>> opciones;
 
-    if (opciones==5 ) {
+    if (opciones == 5 ) {
         
-    cout << "gracias por usarme ,como el me uso " <<endl;
+    cout << "gracias por usar el programa" <<endl;
           condicion=false;
           break; 
-          } 
+          }  else if (opciones >=5)
+          {
+           cout << "INGRESE SOLO LOS NUMEROS Q APARECEN"<<endl;
+           continue;
+          }
+          
      
     cout<<"ingrese el primer numero: ";
     cin>> numero1;
