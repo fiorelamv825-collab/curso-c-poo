@@ -2,16 +2,100 @@
 #include <string>
 using namespace std;
 
-class tienda
-{  //atributos           
+void inicio () {
+  int opciones;
+ bool condicion= true;
+ string user;
+  string contraseña;
+  string crear;
+  string nombre;
+  string correo;
+  string celular;
+  string nacimiento;
+
+      while (condicion)
+     {
+      cout <<"======  WELCOME TO FIORELA`S SUPERSTORE   ======="<<endl;
+    cout << "1. inciar sesion "<<endl;
+    cout << "2. crear cuenta"<<endl;
+    cout<< "3: salir "<<endl;
+    cin>> opciones;
+
+    if (opciones > 3) {
+        
+    cout<<"no existe esa opcion "<<endl;
+    continue;
+     } 
+     if (opciones == 3)
+    {
+      cout << "gracias por su visita " <<endl;
+          condicion=false;
+          break; 
+       }
+       switch (opciones)
+   {
+   case 1 :
+
+     cout<<"ingrese su nombre"<<endl;
+     cin>> user;
+
+     cout<<"ingrese su contraseña"<<endl;
+     cin>>contraseña;
+    break;
+
+   case 2 :
+    cout<< "nombre "<<endl;
+     cin>> nombre;
+    
+     cout<<" correo electronico : "<<endl;
+     cin >>correo;
+
+     while (condicion == true)
+     {
+      cout << "numero de celular: "<<endl;
+     cin >> celular;
+      if (celular.length() == 9)
+     {
+      cout << "el numero es correcto"<<endl;
+       break;
+     } else {
+       cout <<"vuelva a intentarlo "<<endl;
+     } 
+     }
+     
+     
+     cout <<  "fecha de nacimiento: "<<endl;
+     cin>> nacimiento;
+
+     cout << "****felicidades creaste tu cuenta en FIORELA_SUPERSTORE*********"<<endl;
+    break;
+  
+     
+
+    //cout <<"ingrese el nombre de la marca que busca: "<<endl;
+      // cin>>marca;
+       //cout<<"¿es de alta calidad el perfume? (si/no) "<<endl;
+       //cin>>calidad; 
+       //cout << "el precio es de: "<<endl; 
+       //cin>>precio;
+
+}
+   }
+    }
+  
+//**********************************************************+ */
+
+class tienda_FIORELA_superstore
+{  //atributos =caracteristicas           
 private:         //herencia : de la clase madre se puede envisr datos a una clase
  string usuario;  //encapsular es protejer los datos de una clase 
  int clave;       //polimorfirmos usar el mismo aelerar pero con otoro mesaje : 
  string marca;
- string tienda;     // abtraccion el usuario no ve lo q es la ecuacion
-                
+ string tienda;     // abtraccion el usuario no ve lo q es la ecuacion 
+ int opciones;
+
 public:           
- string nombre;
+ string nombre_tienda;
   
  //metodos =funciones
 
@@ -30,13 +114,15 @@ public:
     return marca;
   }
 
- //int setclave () {
-             // get : memuestra 
- //}         //set : modificar
- 
+
 };
-class perfume : public tienda { //aca se esta haciendo herencia
+//------------------------------------------------;
+
+//************************************************************************ */
+
+class perfume : public tienda_FIORELA_superstore { //aca se esta haciendo herencia
 private:
+string perfumes [4];
    int cantidad;
    string intensidad;
    string calidad;
@@ -105,7 +191,7 @@ public:
      string calida = getcalidad();
      int cantidad = getcantidad();
     
-    cout <<"Nombre: "<<nombre<<endl; //sacar : convertirle en funcion
+    cout <<"Nombre: "<<nombre_tienda<<endl; //sacar : convertirle en funcion
     cout<<"Marca: "<<marc <<endl;
     cout<<"Precio: "<<precio<<endl;
     cout<< "informacion: "<<calidad;
@@ -116,31 +202,16 @@ public:
   }
 
 };
-
+//==================================================================================
 int main() {
 
-    string usuario;
-    int clave;
-    string marca;
-    int precio;
-    string calidad;
+ inicio();
+ string usuario;
+ string marca;
+ int precio;
+ perfume sabrina;
 
-    for (int i = 0; i < 1; i++)
-    {  
-      cout <<"======  TIENDA ONLINE SONJ   ======="<<endl;
-       cout<<"Ingrese su nombre usuario: "<<endl;
-       cin>>usuario;
-       cout <<"ingrese el nombre de la marca que busca: "<<endl;
-       cin>>marca;
-       cout<<"¿es de alta calidad el perfume? (si/no) "<<endl;
-       cin>>calidad; 
-       cout << "el precio es de: "<<endl; 
-       cin>>precio;
-    }
-
-    perfume sabrina; 
-
-    sabrina.nombre = usuario;
+    sabrina.nombre_tienda = usuario;
     sabrina.setmarca(marca);
     sabrina.setprecio(precio);
    
@@ -149,4 +220,5 @@ int main() {
     sabrina.mostrar();
     sabrina.ingredientes();
     return 0;
+   
 }

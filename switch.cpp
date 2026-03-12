@@ -21,15 +21,13 @@ int main() {
     cout<< "5: salir "<<endl;
     cin>> opciones;
 
-    if (condicion) {
+    if (opciones==5 ) {
         
-    cout<<"no existe esa opcion "<<endl;
-    continue;
-    cout << "gracias ppor usarme ,como el me uso " <<endl;
+    cout << "gracias por usarme ,como el me uso " <<endl;
           condicion=false;
-          continue; 
+          break; 
           } 
-
+     
     cout<<"ingrese el primer numero: ";
     cin>> numero1;
 
@@ -69,6 +67,7 @@ int main() {
         default: 
         break;
           } 
+
     } }
     return 0;
 }
