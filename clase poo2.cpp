@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 using namespace std;
 
 void inicio () {
@@ -41,6 +42,7 @@ void inicio () {
 
      cout<<"ingrese su contraseña"<<endl;
      cin>>contraseña;
+     condicion = false;
     break;
 
    case 2 :
@@ -50,7 +52,7 @@ void inicio () {
      cout<<" correo electronico : "<<endl;
      cin >>correo;
 
-     while (condicion == true)
+     do
      {
       cout << "numero de celular: "<<endl;
      cin >> celular;
@@ -61,14 +63,16 @@ void inicio () {
      } else {
        cout <<"vuelva a intentarlo "<<endl;
      } 
-     }
-     
+     } while (true); 
      
      cout <<  "fecha de nacimiento: "<<endl;
      cin>> nacimiento;
-
-     cout << "****felicidades creaste tu cuenta en FIORELA_SUPERSTORE*********"<<endl;
+    cout <<"******************************************************************"<<endl;
+     cout << "****felicidades registraste tu cuenta en FIORELA_SUPERSTORE*********"<<endl;
+     cout<<"*******************************************************************"<<endl;
+     condicion = false;
     break;
+    
   
      
 
@@ -88,14 +92,43 @@ void inicio () {
 class tienda_FIORELA_superstore
 {  //atributos =caracteristicas           
 private:         //herencia : de la clase madre se puede envisr datos a una clase
- string usuario;  //encapsular es protejer los datos de una clase 
- int clave;       //polimorfirmos usar el mismo aelerar pero con otoro mesaje : 
+  string clave;                //encapsular es protejer los datos de una clase 
+  string usuario;               //polimorfirmos usar el mismo aelerar pero con otoro mesaje : 
  string marca;
  string tienda;     // abtraccion el usuario no ve lo q es la ecuacion 
  int opciones;
 
-public:           
- string nombre_tienda;
+ 
+ int total= 6;
+
+public: 
+string nombre_tienda[6] = {"ropa", "accesorios", "perfumes","utenzilios", "cremas", "otro"};          
+  
+  virtual void mostrar1 () {  //llamar a la clase
+     cout<<"mostrar tienda: "<<endl; 
+     for (int i = 0; i < total; i++)
+     {
+      cout <<i+1<<"."<<nombre_tienda[i] <<endl;
+     }
+     
+  } 
+  virtual void selecciona1() { //VIRTUAL: significa que se puede cambiar en las clases hijas
+    for (int i = 0; i <7; i++)
+    {
+      int opcion1;
+      cout <<"selecione el numero de la tienda que desa ingresar: "<<endl;
+      cin>> opcion1;
+    }
+    
+  }
+  virtual void guardar1() {
+    if (total < 7)
+    {
+      cout <<"INGRESE EL NOMBRE DE LA TIENDA Q BUSCA: "<<endl;
+      cin>>nombre_tienda[total];
+    }
+    
+  }
   
  //metodos =funciones
 
@@ -113,6 +146,13 @@ public:
   string getmarca() {
     return marca;
   }
+  void setopciones(int o){
+    opciones= o;
+  }
+  int getopciones(){
+    return opciones;
+  }
+  
 
 
 };
@@ -128,10 +168,37 @@ string perfumes [4];
    string calidad;
    string tamano;
    int precio;
-
+   int total1=5;
+   
 public:
-  string informacion;
+string informacion;
   string informacion1;
+
+string nombre_perfumes[5]= {"dola", "cora","kori","sabrina", "otro"};
+  void mostrar1 () override { //OVIRRIDE: se indica q se esta cambiando en metodo de la clase padre
+    int c=5; 
+     cout<<"mostrar perfumes: "<<endl; 
+     for (int i = 0; i < total1; i++)
+     {
+      cout <<i+1<<"."<<nombre_perfumes[i] <<endl;
+     }
+     
+  } 
+  void selecciona1() override {
+      int opcion1;
+      cout <<"selecione el perfume que desea: "<<endl;
+      cin>> opcion1;
+    
+  }
+  void guardar1() override {
+    if (total1 < 4)
+    {
+      cout <<"ingrese el perfume q busca: "<<endl;
+      cin>>nombre_perfumes[total1];
+      
+    }
+   
+  }
 
   void setcalidad(string c){
      calidad = c;
@@ -162,7 +229,10 @@ public:
 
 
   void leerinformacion(){
-    if (calidad == "si" || calidad == "SI" || calidad == "Si")// convertir 
+    for(int i = 0; i < calidad.length(); i++){
+        calidad[i] = tolower(calidad[i]);
+    }
+    if (calidad == "si")// convertir 
     {
       cout<< "muy buena"<<endl; // poli
     }
@@ -179,29 +249,38 @@ public:
   void setprecio (int p) {
     while ( p < 0)
     {
-      cout << "no existe el precio negativo. ingree denuevo" <<endl;
+      cout << "no existe el precio negativo. ingrese denuevo" <<endl;
       cin>>p;
     }
       precio = p;
   }
   
 
-  void mostrar(){
-     string marc = getmarca();
-     string calida = getcalidad();
-     int cantidad = getcantidad();
+  
+};
+void mostrar(tienda_FIORELA_superstore *t){ //crear objeto
+    perfume sabrina; // <- esto se llama objeto : es como se instacia la clase
+    t->mostrar1();
+     t->selecciona1();
+     t->guardar1();
+     sabrina.tienda_FIORELA_superstore::mostrar1();
+     
     
-    cout <<"Nombre: "<<nombre_tienda<<endl; //sacar : convertirle en funcion
-    cout<<"Marca: "<<marc <<endl;
-    cout<<"Precio: "<<precio<<endl;
-    cout<< "informacion: "<<calidad;
-    cout << "informacion2: "<<cantidad; 
-    leerinformacion();
+     //string cal6ida = getcalidad();
+     //int cantidad = getcantidad();
+    //int opciones = getopciones();
+    //cout <<"Nombre: "<<nombre_tienda[opciones] <<endl;
+    //cout <<"nombre: "<<nombre_perfumes[opciones]<<endl; //sacar : convertirle en funcion
+    //cout<<"Marca: "<<marc <<endl;
+    //cout<<"Precio: "<<precio<<endl;
+    //cout<< "informacion: "<<calidad;
+    //cout << "informacion2: "<<cantidad;
+
+    //leerinformacion();
    
   
   }
 
-};
 //==================================================================================
 int main() {
 
@@ -211,13 +290,17 @@ int main() {
  int precio;
  perfume sabrina;
 
-    sabrina.nombre_tienda = usuario;
+ mostrar(&sabrina);
+ 
+    sabrina.nombre_tienda[0] = usuario;
     sabrina.setmarca(marca);
     sabrina.setprecio(precio);
    
     cout <<"====== SABRINA ======"<<endl;
 
-    sabrina.mostrar();
+    
+    sabrina.selecciona1();
+    sabrina.mostrar1();
     sabrina.ingredientes();
     return 0;
    
