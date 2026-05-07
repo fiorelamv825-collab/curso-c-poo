@@ -24,7 +24,7 @@ int main() {
     if (opciones == 5 ) {
         
     cout << "gracias por usar el programa" <<endl;
-          condicion=false;
+         condicion=false;
           break; 
           }  else if (opciones >=5)
           {
@@ -43,10 +43,10 @@ int main() {
    {
    case 1 :
     
-    resultado1= numero1 + numero2;
+resultado1= numero1 + numero2;
 
-     cout<<"resultado: "<<resultado1;
-    break;
+ cout<<"resultado: "<<resultado1;
+ break;
 
    case 2 :
     
