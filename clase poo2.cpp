@@ -93,7 +93,7 @@ class tienda_FIORELA_superstore
 {  //atributos =caracteristicas           
 private:         //herencia : de la clase madre se puede envisr datos a una clase
   string clave;                //encapsular es protejer los datos de una clase 
-  string usuario;               //polimorfirmos usar el mismo aelerar pero con otoro mesaje : 
+  string usuario;               //polimorfismos usar el mismo aelerar pero con otoro mensaje : 
  string marca;
  string tienda;     // abtraccion el usuario no ve lo q es la ecuacion 
  int opciones;
